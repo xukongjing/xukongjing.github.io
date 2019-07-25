@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+	<head>
+    <title>首页</title>
+    <meta charSet="utf-8" />
+    <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+    <meta httpEquiv="Cache-Control" content="no-siteapp" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+ 	<style>
+ 		* {
+    padding: 0;
+    margin: 0;
+}
+ 
+.main {
+    width: 100vw;
+    height: auto;
+    overflow: hidden;
+}
+ 
+.banner {
+    width: 100vw;
+    height: 160px;
+    overflow: hidden;
+}
+ 
+.banner-slide {
+    width: 100vw;
+    height: 160px;
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+.title{
+	    padding: 5px;
+    font-weight: 700;
+}
+ 
+.slide1 {
+    background-image: url("img/logo1.png");
+}
+.slide2 {
+    background-image: url("img/logo2.jpg");
+}
+.slide3 {
+    background-image: url("img/logo3.jpg");
+}
+.slide4 {
+    background-image: url("img/logo4.jpg");
+}
+.app{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+.app .row{
+	/*width: 33vw;*/
+}
+.row .img-wrap{
+	width:100%;
+	height:0; 
+	padding-bottom:100%;
+	overflow:hidden;
+	margin:0;
+	position:relative;
+}
+.app .row .img-wrap img{
+	width:100%;
+  height:100%;
+  position:absolute;
+}
+.middle{
+
+}
+.text{
+	text-align: center;
+	color: #555;
+	font-size:12px;
+	padding: 4px 0;
+}
+[v-cloak]{
+  display: none;
+}
+ 	</style>
+  <body>
+  	<div class="main" id="main">
+        <div class="banner" id="banner">
+            <a href="#">
+                <div class="banner-slide slide1"></div>
+            </a>
+            <a href="#">
+                <div class="banner-slide slide2"></div>
+            </a>
+            <a href="#">
+                <div class="banner-slide slide3"></div>
+            </a>
+            <a href="#">
+                <div class="banner-slide slide4"></div>
+            </a>
+        </div>
+        <p class="title">Color | 电子色卡</p>
+        <div id="app" class="app">
+        	<div class="row" v-for="(item,index) in list" :key="item.title" 
+        		:style="index%3==1?middlStyle:norStyle" @click="go(item.url)">
+        		<div class="img-wrap">
+        			<img :src="'img/colors/'+item.title+' 副本.jpg' "/>
+        		</div>
+        		
+        		<div v-cloak class="text">{{item.title}}</div>
+        	</div>
+        </div>
+    </div>
+  </body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script type="text/javascript">
+	console.log('--',document.documentElement.clientWidth)
+	let width = document.documentElement.clientWidth;
+	const colWidth = (width-2)/3
+	var app = new Vue({
+  el: '#app',
+  methods:{
+  	go(url){
+  		location.href = url;
+  	}
+  },
+  data: {
+  	middlStyle: {
+  		marginLeft: '1px',
+  		marginRight: '1px',
+  		width:colWidth+'px'
+  	},
+  	norStyle:{
+  		width:colWidth+'px'
+  	},
+    list: [
+    	{title: '001-茉莉白', url: 'https://720yun.com/t/30vkn7rhOqe'},
+    	{title: '002-象牙黄', url: 'https://720yun.com/t/f9vkn7rhOqy'},
+    	{title: '061-奶油黄', url: 'https://720yun.com/t/bbvkn7rhOf7'},
+    	{title: '004-紫罗兰', url: 'https://720yun.com/t/4bvkn7rhOiy'},
+    	{title: '005-豆青色', url: 'https://720yun.com/t/4bvkn7rhOih'},
+    	{title: '006-姜黄色', url: 'https://720yun.com/t/efvkn7rhOdy'},
+    	{title: '062-夏日精灵', url: 'https://720yun.com/t/cdvkn7rhOdm'},
+    	{title: '008-相思灰', url: 'https://720yun.com/t/d7vkn7rhO1e'},
+    	{title: '009-水蓝色', url: 'https://720yun.com/t/9fvkn7rhO1w'},
+    	{title: '010-栗色', url: 'https://720yun.com/t/f8vkn7rhO1q'},
+    	{title: '011-米灰色', url: 'https://720yun.com/t/c3vkn7rh78l'},
+    	{title: '012-樱草黄', url: 'https://720yun.com/t/75vkn7rh78y'},
+    	{title: '013-香芋色', url: 'https://720yun.com/t/bcvkn7rh78q'},
+    	{title: '014-金黄色', url: 'https://720yun.com/t/49vkn7rh779'},
+    	{title: '015-黎棕色', url: 'https://720yun.com/t/10vkn7rh77h'},
+    	{title: '016-粉红色', url: 'https://720yun.com/t/0dvkn7rh7pl'},
+    	{title: '017-星空蓝', url: 'https://720yun.com/t/16vkn7rh7pm'},
+    	{title: '018-青绿色', url: 'https://720yun.com/t/16vkn7rh7pm'},
+    	{title: '019-浅驼色', url: 'https://720yun.com/t/33vkn7rh7fq'},
+    	{title: '020-经典黑', url: 'https://720yun.com/t/efvkn7rh7fb'},
+    	{title: '063-古典灰', url: 'https://720yun.com/t/a8vkn7rh7iy'},
+    	{title: '022-秋黄色', url: 'https://720yun.com/t/19vkn7rh7im'},
+    	{title: '023-核桃黄', url: 'https://720yun.com/t/cbvkn7rh7de'},
+    	{title: '024-豆沙绿', url: 'https://720yun.com/t/ccvkn7rh7dy'},
+    	{title: '025-春粉色', url: 'https://720yun.com/t/f8vkn7rh7dq'},
+    	{title: '026-浅橙色', url: 'https://720yun.com/t/ddvkn7rh7r9'},
+    	{title: '027-卡其黄', url: 'https://720yun.com/t/52vkn7rh7rq'},
+    	{title: '028-高级灰', url: 'https://720yun.com/t/71vkn7rh7rb'},
+    	{title: '029-锈红', url: 'https://720yun.com/t/ecvkn7rh71w'},
+    	{title: '030-水粉色', url: 'https://720yun.com/t/84vkn7rbr8y'},
+    	{title: '031-藤黄色', url: 'https://720yun.com/t/b2vkn7rbr7l'},
+    	{title: '064-卡斯风情', url: 'https://720yun.com/t/36vkn7rbr77'},
+    	{title: '033-胭脂色', url: 'https://720yun.com/t/2avkn7rbrpm'},
+    	{title: '034-竹青色', url: 'https://720yun.com/t/31vkn7rbr2y'},
+    	{title: '035-霜白色', url: 'https://720yun.com/t/05vkn7rbd2w'},
+    	{title: '065-桑染', url: 'https://720yun.com/t/5dvkn7rbdfe'},
+    	{title: '066-薰衣草', url: 'https://720yun.com/t/cevkn7rbdi7'},
+    	{title: '038-藕粉', url: 'https://720yun.com/t/85vkn7rbddm'},
+    	{title: '039-米黄色', url: 'https://720yun.com/t/8evkn7rbdr9'},
+    	{title: '040-檀香色', url: 'https://720yun.com/t/8evkn7rbdr9'},
+    	{title: '041-蛋青色', url: 'https://720yun.com/t/a6vkn7rb58y'},
+    	{title: '042-春绿色', url: 'https://720yun.com/t/eavkn7rb587'},
+    	{title: '043-蔷薇粉', url: 'https://720yun.com/t/0avkn7rb57w'},
+    	{title: '067-柔粉', url: 'https://720yun.com/t/devkn7rb5pe'},
+    	{title: '045-宝石蓝', url: 'https://720yun.com/t/19vkn7rb5pm'},
+    	{title: '046-翡翠绿', url: 'https://720yun.com/t/4avkn7rb52b'},
+    	{title: '047-紫藤灰', url: 'https://720yun.com/t/73vkn7rb5q7'},
+    	{title: '048-藕荷色', url: 'https://720yun.com/t/44vkn7rb5qb'},
+    	{title: '068-优雅日光', url: 'https://720yun.com/t/07vkn7rb5f7'},
+    	{title: '050-黛青色', url: 'https://720yun.com/t/7avkn7rb5ie'},
+    	{title: '051-浅黄棕', url: 'https://720yun.com/t/53vkn7rb5ih'},
+    	{title: '052-织锦灰', url: 'https://720yun.com/t/9dvkn7rb5d7'},
+    	{title: '053-深烟色', url: 'https://720yun.com/t/6bvkn7rb5dh'},
+    	{title: '054-葱绿色', url: 'https://720yun.com/t/c7vkn7rb5ry'},
+    	{title: '069-浅咖啡', url: 'https://720yun.com/t/c9vkn7rb5r7'},
+    	{title: '056-中国红', url: 'https://720yun.com/t/2evkn7rb5rh'},
+    	{title: '057-秋菊黄', url: 'https://720yun.com/t/94vkn7rb51l'},
+    	{title: '058-妃色', url: 'https://720yun.com/t/7cvkn7rb51e'},
+    	{title: '079-孔雀兰', url: 'https://720yun.com/t/72vkn7rb51h'},
+    	{title: '060-丁香紫', url: 'https://720yun.com/t/0fvkn7rbp8y'},
+
+    ]
+  }
+})
+</script>
+<script>
+var timer = null,
+    index = 0,
+    pics = document.getElementsByClassName("banner-slide");
+    // lis = document.getElementsByTagName("li");
+ 
+ 
+//封装一个代替getElementById()的方法
+function byId(id){
+    return typeof(id) === "string"?document.getElementById(id):id;
+}
+ 
+function slideImg() {
+    var main = byId("main");
+    var banner = byId("banner");
+    main.onmouseover = function(){
+        stopAutoPlay();
+    }
+    main.onmouseout = function(){
+        startAutoPlay();
+    }
+    main.onmouseout();
+}
+//开始播放轮播图
+function startAutoPlay(){
+    timer = setInterval(function(){
+        index++;
+        if(index>3){
+            index = 0;
+        }
+        changeImg();
+    },2000);
+}
+//暂停播放
+function stopAutoPlay(){
+    if (timer) {
+        clearInterval(timer);
+    }
+}
+//改变轮播图
+function changeImg(){
+    for(var i=0;i<pics.length;i++){
+        pics[i].style.display = "none";
+        // lis[i].className = "";
+    }
+    pics[index].style.display = "block";
+    // lis[index].className = "changeColor";
+}
+slideImg();
+</script>
+</html>
